@@ -33,54 +33,54 @@
 /* Leaderboard style */
 .leaderboard {
   display: flex;
-  flex-direction: column; /* Change flex direction to column */
-  align-items: center; /* Center content horizontally */
+  flex-direction: column;
+  align-items: center;
 }
 
 .player-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center; /* Center the content vertically */
-  margin-top: 50px; /* Add space from the top */
-  font-size: 20px; /* Increase font size */
+  align-items: center;
+  margin-top: 50px;
+  font-size: 20px;
   margin-bottom: auto;
 }
 
 /* Optional: Adjust spacing between player cards */
 .player-card {
-  width: 20vh; /* Set width to make the card bigger */
-  height: 35vh; /* Set height to make the card bigger */
-  margin: 4vh; /* Add margin to create space between player cards */
-  padding: 4vh; /* Add padding to create space inside the card */
-  border: 1px solid #ccc; /* Add border for visual separation */
-  border-radius: 10px; /* Add border-radius for rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
-  text-align: center; /* Center the content horizontally */
+  width: 20vh;
+  height: 35vh;
+  margin: 4vh;
+  padding: 4vh;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .player-card img {
-  width: 20vh; /* Set width of the image */
-  height: 20vh; /* Set height of the image */
-  object-fit: cover; /* Maintain aspect ratio and fill the space */
+  width: 20vh;
+  height: 20vh;
+  object-fit: cover;
   /*border-radius: 10%; !* Make the image circular *!*/
 }
 
 .bottom-container {
-  margin-top: auto; /* Push the button to the bottom */
+  margin-top: auto;
 }
 
 .load-button {
-  background-color: blue; /* Set background color to blue */
-  color: white; /* Set text color to white */
-  font-size: 24px; /* Increase font size */
-  padding: 15px 30px; /* Add padding */
-  border: none; /* Remove border */
-  border-radius: 10px; /* Add border radius */
-  cursor: pointer; /* Change cursor on hover */
-  transition: background-color 0.3s; /* Add transition effect */
+  background-color: blue;
+  color: white;
+  font-size: 24px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .load-button:hover {
-  background-color: dodgerblue; /* Change background color on hover */
+  background-color: dodgerblue;
 }
