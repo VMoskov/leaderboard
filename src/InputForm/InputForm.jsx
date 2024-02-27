@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Leaderboard } from "../Leaderboard/Leaderboard";
 
 export const InputForm = () => {
     const [playerName, setPlayerName] = useState('');
@@ -42,6 +43,7 @@ export const InputForm = () => {
         setPlayers(prevPlayers => ({
             ...prevPlayers,
             [playerName]: {
+                name: playerName,
                 photo: playerPhoto,
                 score: 0
             }
@@ -50,6 +52,8 @@ export const InputForm = () => {
         setPlayerName('');
         setPlayerPhoto('');
     };
+
+    if(playerIndex === 6) return <Leaderboard players={players} />;
 
     return (
         <div className='input-form'>
