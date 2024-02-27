@@ -67,8 +67,7 @@ export const InputForm = () => {
     };
 
 
-
-    if(playerIndex === 6) return <Leaderboard players={players} />;
+    if(playerIndex === 6) return <Leaderboard players={players}/>;
 
     return (
         <div className='input-form'>
