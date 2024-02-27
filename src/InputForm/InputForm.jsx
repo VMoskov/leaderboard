@@ -40,18 +40,33 @@ export const InputForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setPlayers(prevPlayers => ({
-            ...prevPlayers,
-            [playerName]: {
-                name: playerName,
-                photo: playerPhoto,
-                score: 0
-            }
-        }));
-        setPlayerIndex(playerIndex + 1);
-        setPlayerName('');
-        setPlayerPhoto('');
+
+        const fileInput = document.getElementById('playerPhoto');
+
+        if (fileInput && fileInput.files && fileInput.files.length > 0) { // Check if a file is selected
+            const file = fileInput.files[0];
+            const dataURL = URL.createObjectURL(file);
+
+            setPlayers(prevPlayers => ({
+                ...prevPlayers,
+                [playerName]: {
+                    name: playerName,
+                    photo: dataURL,
+                    score: 0
+                }
+            }));
+
+            setPlayerIndex(playerIndex + 1);
+            setPlayerName('');
+            fileInput.value = '';
+            setPlayerPhoto('');
+        }
+        else {
+            console.error('No file selected');
+        }
     };
+
+
 
     if(playerIndex === 6) return <Leaderboard players={players} />;
 
@@ -74,8 +89,6 @@ export const InputForm = () => {
                     type='file'
                     id='playerPhoto'
                     name='playerPhoto'
-                    value={ playerPhoto }
-                    onChange={(e) => setPlayerPhoto(e.target.value)}
                     required
                 /><br /><br />
 
