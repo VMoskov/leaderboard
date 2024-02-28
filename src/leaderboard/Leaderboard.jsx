@@ -22,11 +22,15 @@ export const Leaderboard = () => {
             .then(data => {
                 console.log(data);
                 setScores(data);
+                // Create a new object with updated scores
+                const updatedPlayers = { ...players };
                 for(let playerKey in data) {
-                    if(players[playerKey]) {
-                        players[playerKey].score = data[playerKey];
+                    if(updatedPlayers[playerKey]) {
+                        updatedPlayers[playerKey].score = data[playerKey];
                     }
                 }
+                // Set the players state with the new object
+                setPlayers(updatedPlayers);
             })
             .catch(error => console.error(error));
     };
@@ -35,7 +39,7 @@ export const Leaderboard = () => {
         <div className='leaderboard'>
             <div className='player-cards'>
                 {sortedPlayers.map((player, index) => (
-                    <PlayerCard key={player.name} player={player} position={index + 1} />
+                    <PlayerCard key={player.name} player={player} order={index + 1} />
                 ))}
             </div>
             <div className='bottom-container'>
