@@ -7,6 +7,13 @@ export const Leaderboard = () => {
     const initialPlayers = playersFromLS ? JSON.parse(playersFromLS) : {};
     const [players, setPlayers] = useState(initialPlayers);
     const [playerCardsKey, setPlayerCardsKey] = useState(0); // Initialize key state
+    const [sortedPlayers, setSortedPlayers] = useState([]);
+
+    useEffect(() => {
+        // Sort the players based on their score
+        const sorted = Object.values(players).sort((a, b) => b.score - a.score);
+        setSortedPlayers(sorted);
+    }, [players]);
 
 
     const loadScores = () => {
@@ -27,8 +34,8 @@ export const Leaderboard = () => {
     return (
         <div className='leaderboard'>
             <div className='player-cards'>
-                {Object.keys(players).map((playerKey, index) => (
-                    <PlayerCard key={`${playerKey}-${playerCardsKey}`} player={players[playerKey]} />
+                {sortedPlayers.map((player, index) => (
+                    <PlayerCard key={player.name} player={player} position={index + 1} />
                 ))}
             </div>
             <div className='bottom-container'>

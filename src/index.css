@@ -63,6 +63,7 @@
   width: 20vh;
   height: 20vh;
   object-fit: cover;
+  transition: all 0.5s ease-in-out;
   /*border-radius: 10%; !* Make the image circular *!*/
 }
 
