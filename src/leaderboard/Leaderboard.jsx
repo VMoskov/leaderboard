@@ -1,5 +1,5 @@
-import { PlayerCard } from '../PlayerCard/PlayerCard';
-import { useState, useEffect } from 'react';
+import {PlayerCard} from '../PlayerCard/PlayerCard';
+import {useEffect, useState} from 'react';
 
 export const Leaderboard = () => {
     const [scores, setScores] = useState({});
@@ -15,6 +15,21 @@ export const Leaderboard = () => {
         setSortedPlayers(sorted);
     }, [players]);
 
+
+    const switchPlaces = () => {
+        const playerCards = document.querySelectorAll('.player-card');
+        const cardWidth = playerCards[0].offsetWidth;
+
+        const cardsPerRow = 5
+
+        const translateX = cardWidth * (cardsPerRow - 1);
+
+        // Apply new transform to each player card
+        playerCards.forEach((card, index) => {
+            const col = index % cardsPerRow;
+            card.style.transform = `translateX(${col * translateX * 0.0001}vh)`; // Apply the transform
+        });
+    };
 
     const loadScores = () => {
         fetch('http://localhost:8080/')
@@ -33,6 +48,7 @@ export const Leaderboard = () => {
                 setPlayers(updatedPlayers);
             })
             .catch(error => console.error(error));
+        switchPlaces();
     };
 
     return (
