@@ -11,7 +11,7 @@ export const Leaderboard = () => {
 
     useEffect(() => {
         // Sort the players based on their score
-        const sorted = Object.values(players).sort((a, b) => b.score - a.score);
+        const sorted = Object.values(players).sort((a, b) => a.score - b.score);
         setSortedPlayers(sorted);
     }, [players]);
 

@@ -45,6 +45,7 @@
   margin-top: 50px;
   font-size: 20px;
   margin-bottom: auto;
+  transition: all 1s ease;
 }
 
 /* Optional: Adjust spacing between player cards */
@@ -57,13 +58,13 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: all 1s ease;
 }
 
 .player-card img {
   width: 20vh;
   height: 20vh;
   object-fit: cover;
-  transition: all 0.5s ease-in-out;
   /*border-radius: 10%; !* Make the image circular *!*/
 }
 
