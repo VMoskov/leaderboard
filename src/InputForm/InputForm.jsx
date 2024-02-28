@@ -6,6 +6,7 @@ export const InputForm = () => {
     const [playerPhoto, setPlayerPhoto] = useState('');
     const [players, setPlayers] = useState({});
     const [playerIndex, setPlayerIndex] = useState(1);
+    const [arePlayersLoaded, setArePlayersLoaded] = useState(false);
 
     // Load data from localStorage on component mount
     useEffect(() => {
@@ -18,6 +19,7 @@ export const InputForm = () => {
         else {
             localStorage.setItem('players', JSON.stringify({}));
         }
+
         if (storedPlayerIndex) {
             setPlayerIndex(parseInt(storedPlayerIndex));
         }
@@ -37,6 +39,22 @@ export const InputForm = () => {
         if(localStorage.getItem('playerIndex') > String(playerIndex)) return;
         localStorage.setItem('playerIndex', String(playerIndex));
     }, [playerIndex]);
+
+    useEffect(() => {
+        if (playerIndex === 6) {
+            fetch('http://localhost:8080/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ players })
+            })
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error(error));
+            setArePlayersLoaded(true)
+        }
+    }, [playerIndex, players]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -66,8 +84,7 @@ export const InputForm = () => {
         }
     };
 
-
-    if(playerIndex === 6) return <Leaderboard players={players}/>;
+    if(arePlayersLoaded) return <Leaderboard />;
 
     return (
         <div className='input-form'>
